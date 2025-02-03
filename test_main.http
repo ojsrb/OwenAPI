@@ -1,0 +1,24 @@
+# Test your FastAPI endpoints
+
+GET http://127.0.0.1:8000/
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/history
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/set/0421/testing
+Accept: application/json
+
+###
+
+POST /get HTTP/1.1
+Host: 127.0.0.1:8000
+Content-Type: application/json
+Content-Length: 21
+
+{"action": "testing"}
+
