@@ -45,8 +45,8 @@ docs = {
     "/history (GET)": "view recent actions of Owen",
     "/set/{password}/{action} (GET)": "For Owen to set his action, password locked",
     "/help (GET)": "this screen, shows commands",
-    "/get (POST)": "search for an action, takes json: {action: String (Optional), time: Int (Optional)}, if nothing specified, returns action history"
-
+    "/get (POST)": "search for an action, takes json: {action: String (Optional), time: Int (Optional)}, if nothing specified, returns action history",
+    "/current (GET)": "get Owen's current action"
 }
 
 class Action(BaseModel):
@@ -59,7 +59,10 @@ async def root():
 
 @app.get("/history")
 async def history():
-    return {"history": data.history()}
+    if history():
+        return {"history": data.history()}
+    else:
+        return {"error": "No history found"}
 
 @app.get("/help")
 async def help():
@@ -83,3 +86,10 @@ async def get(action: Action):
                 return {"error": "Invalid action", "action": action}
     else:
         return {"history": history()}
+
+@app.get("/current")
+async def current():
+    if current():
+        return {"current": current()}
+    else:
+        return {"error": "Invalid action"}
