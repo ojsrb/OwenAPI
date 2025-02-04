@@ -22,3 +22,8 @@ Content-Length: 21
 
 {"action": "testing"}
 
+###
+
+GET http://127.0.0.1:8000/current
+Accept: application/json
+

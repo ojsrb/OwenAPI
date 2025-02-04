@@ -88,7 +88,7 @@ async def get(action: Action):
         return {"history": history()}
 
 @app.get("/current")
-async def current():
+async def getcurrent():
     if current():
         return {"current": current()}
     else:
