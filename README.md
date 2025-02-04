@@ -3,6 +3,9 @@ Owen's API
 An API for tracking exactly what Owen is doing... constantly...
 It's not creepy I promise.
 
+#### Access
+Server is accessible at: 
+
 ### Commands
 
 - /help (GET) - get a list of commands
