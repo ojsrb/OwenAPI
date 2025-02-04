@@ -7,6 +7,8 @@ import dotenv as env
 import os
 import time
 
+from starlette.responses import HTMLResponse
+
 env.load_dotenv()
 
 envpassword = os.getenv("PASSWORD")
@@ -53,9 +55,40 @@ class Action(BaseModel):
     action: Optional[str]
     time: Optional[int] = None
 
+html = '''
+<!DOCTYPE html>
+<html>
+<h1>Owen's API</h1>
+<body>
+
+An API for tracking exactly what Owen is doing... constantly...
+It's not creepy I promise.
+
+<h2>Access</h2>
+Server is accessible at: owen-action-api.vercel.app
+
+<h2>Commands</h2>
+<ul>
+
+- /help (GET) - get a list of commands
+<p>
+- /set/{password}/{action} (GET)** - For Owen to set his current action, you don't get the password!
+</p>
+<p>
+- /history (GET) - Get a history of all action, complete with timestamps {"history": [Actions]}
+</p>
+<p>
+- /get (POST) - Get an action based on time or name: {"action": String, "time": Int (Unix Time)}
+</p>
+<p>
+- /current (GET) - Get Owen's current action {"current": "{action}"}
+</p>
+</body>
+</html>
+'''
 @app.get("/")
 async def root():
-    return {"Welcome to the Owen API! Use '/help' for reference."}
+    return HTMLResponse(html)
 
 @app.get("/history")
 async def history():
