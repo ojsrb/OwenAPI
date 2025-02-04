@@ -16,21 +16,6 @@ envpassword = os.getenv("PASSWORD")
 f = open('owen.json')
 data = json.load(f)
 
-def getdata():
-    return data
-
-def history():
-    history = data['history']
-    return history
-
-def current():
-    current = data['current']
-    return current
-
-def started():
-    started = data['started']
-    return started
-
 def checkpassword(password):
     if str(envpassword) == str(password):
         return True
@@ -92,8 +77,8 @@ async def root():
 
 @app.get("/history")
 async def history():
-    if history():
-        return {"history": data.history()}
+    if data['history'] != []:
+        return {"history": data['history']}
     else:
         return {"error": "No history found"}
 
@@ -105,7 +90,7 @@ async def help():
 async def setaction(password: str, action: str):
     if checkpassword(password):
         set(action)
-        return {"success": True, "data": getdata()}
+        return {"success": True, "data": data}
     else:
         return {"error": "Invalid password"}
 
@@ -118,11 +103,11 @@ async def get(action: Action):
             else:
                 return {"error": "Invalid action", "action": action}
     else:
-        return {"history": history()}
+        return {"history": data['history']}
 
 @app.get("/current")
 async def getcurrent():
-    if current():
-        return {"current": current()}
+    if data['current'] != "":
+        return {"current": data['current'], "time": data['started']}
     else:
-        return {"error": "Invalid action"}
+        return {"current": "None"}
