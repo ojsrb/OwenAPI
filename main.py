@@ -15,6 +15,7 @@ envpassword = os.getenv("PASSWORD")
 
 f = open('owen.json')
 data = json.load(f)
+f.close()
 
 def checkpassword(password):
     if str(envpassword) == str(password):
@@ -26,6 +27,11 @@ def set(action):
 
     data['current'] = action
     data['started'] = round(time.time())
+
+    f = open('owen.json', 'w')
+    f.write(json.dumps(data))
+    f.close()
+
 app = FastAPI()
 
 docs = {
