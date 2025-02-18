@@ -17,4 +17,5 @@ Server is accessible at: owen-action-api.vercel.app
 ### Notes
 
 For RaspAPI Reviewers, you won't be able to access /set because you do not have the password. This is what it does return when you DO have the password. 
+
 <img width="301" alt="Screenshot 2025-02-18 at 9 56 54 AM" src="https://github.com/user-attachments/assets/9d4629b3-d21b-48a8-9a27-935ec73db69f" />
