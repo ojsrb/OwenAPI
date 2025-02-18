@@ -6,7 +6,6 @@ import json
 import dotenv as env
 import os
 import time
-
 from starlette.responses import HTMLResponse
 
 env.load_dotenv()
@@ -62,18 +61,15 @@ Server is accessible at: owen-action-api.vercel.app
 <ul>
 
 - /help (GET) - get a list of commands
-<p>
-- /set/{password}/{action} (GET)** - For Owen to set his current action, you don't get the password!
-</p>
-<p>
+
+- /set/{password}/{action} (GET) - For Owen to set his current action, you don't get the password!
+
 - /history (GET) - Get a history of all action, complete with timestamps {"history": [Actions]}
-</p>
-<p>
+
 - /get (POST) - Get an action based on time or name: {"action": String, "time": Int (Unix Time)}
-</p>
-<p>
+
 - /current (GET) - Get Owen's current action {"current": "{action}"}
-</p>
+
 </body>
 </html>
 '''
