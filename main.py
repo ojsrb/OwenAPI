@@ -12,7 +12,7 @@ env.load_dotenv()
 
 envpassword = os.getenv("PASSWORD")
 
-f = open('owen.json')
+f = open('data.json')
 data = json.load(f)
 f.close()
 
@@ -20,14 +20,14 @@ def checkpassword(password):
     if str(envpassword) == str(password):
         return True
 
-def set(action):
+def setaction(action):
     if data['current'] != "":
         data['history'].append({"action": data['current'], "timeStarted": data['started']})
 
     data['current'] = action
     data['started'] = round(time.time())
 
-    f = open('owen.json', 'w')
+    f = open('data.json', 'w')
     f.write(json.dumps(data))
     f.close()
 
@@ -89,9 +89,9 @@ async def help():
     return docs
 
 @app.get("/set/{password}/{action}")
-async def setaction(password: str, action: str):
+async def set(password: str, action: str):
     if checkpassword(password):
-        set(action)
+        setaction(action)
         return {"success": True, "data": data}
     else:
         return {"error": "Invalid password"}
