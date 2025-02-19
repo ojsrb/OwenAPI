@@ -2,6 +2,8 @@ Owen's API
 
 An API for tracking exactly what Owen is doing... constantly...
 It's not creepy I promise.
+You can view my current task, kinda like a status.
+This could be useful for many things, like creating a status board to show others what your up to, which is the main goal for this project. I will implement a system that uses a microcontroller and LED Board to show my status to people around me such as coding, in a meeting, sleeping, etc.
 
 #### Access
 Server is accessible at owen-action-api.vercel.app
