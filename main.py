@@ -17,8 +17,7 @@ data = json.load(f)
 f.close()
 
 def checkpassword(password):
-    if str(envpassword) == str(password):
-        return True
+    return str(envpassword) == str(password)
 
 def setaction(action):
     if data['current'] != "":
@@ -55,20 +54,23 @@ An API for tracking exactly what Owen is doing... constantly...
 It's not creepy I promise.
 
 <h2>Access</h2>
-Server is accessible at: owen-action-api.vercel.app
+<a href="https://owen-action-api.vercel.app">Server</a>
+<br />
+<a href="https://github.com/ojsrb/OwenAPI">GitHub</a>
 
 <h2>Commands</h2>
+
 <ul>
+<li> /help (GET) - get a list of commands </li>
 
-- /help (GET) - get a list of commands
+<li> /set/{password}/{action} (GET) - For Owen to set his current action, you don't get the password! </li>
 
-- /set/{password}/{action} (GET) - For Owen to set his current action, you don't get the password!
+<li> /history (GET) - Get a history of all action, complete with timestamps {"history": [Actions]} </li>
 
-- /history (GET) - Get a history of all action, complete with timestamps {"history": [Actions]}
+<li> /get (POST) - Get an action based on time or name: {"action": String, "time": Int (Unix Time)} </li>
 
-- /get (POST) - Get an action based on time or name: {"action": String, "time": Int (Unix Time)}
-
-- /current (GET) - Get Owen's current action {"current": "{action}"}
+<li> /current (GET) - Get Owen's current action {"current": "{action}"} </li>
+</ul>
 
 </body>
 </html>
